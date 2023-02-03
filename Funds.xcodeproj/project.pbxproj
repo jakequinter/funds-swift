@@ -12,6 +12,12 @@
 		B738D2FF298DAC9D002E4D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B738D2FE298DAC9D002E4D22 /* Assets.xcassets */; };
 		B738D302298DAC9D002E4D22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B738D301298DAC9D002E4D22 /* Preview Assets.xcassets */; };
 		B738D30A298DACB5002E4D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B738D309298DACB5002E4D22 /* GoogleService-Info.plist */; };
+		B7888A92298DBE32007EB248 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7888A91298DBE32007EB248 /* Year.swift */; };
+		B7888A95298DBEA3007EB248 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7888A94298DBEA3007EB248 /* FirestoreManager.swift */; };
+		B7888A98298DBEDE007EB248 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7888A97298DBEDE007EB248 /* FirebaseFirestoreSwift */; };
+		B79C14F8298DB1FD00978C9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14F7298DB1FD00978C9F /* FirebaseAnalytics */; };
+		B79C14FA298DB1FD00978C9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14F9298DB1FD00978C9F /* FirebaseAuth */; };
+		B79C14FC298DB1FD00978C9F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14FB298DB1FD00978C9F /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,9 @@
 		B738D301298DAC9D002E4D22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B738D303298DAC9D002E4D22 /* Funds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Funds.entitlements; sourceTree = "<group>"; };
 		B738D309298DACB5002E4D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B787C559298DB910003BBECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B7888A91298DBE32007EB248 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		B7888A94298DBEA3007EB248 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +38,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79C14F8298DB1FD00978C9F /* FirebaseAnalytics in Frameworks */,
+				B79C14FA298DB1FD00978C9F /* FirebaseAuth in Frameworks */,
+				B79C14FC298DB1FD00978C9F /* FirebaseFirestore in Frameworks */,
+				B7888A98298DBEDE007EB248 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +53,7 @@
 			children = (
 				B738D2F9298DAC9C002E4D22 /* Funds */,
 				B738D2F8298DAC9C002E4D22 /* Products */,
+				B7888A96298DBEDE007EB248 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,9 +69,13 @@
 			isa = PBXGroup;
 			children = (
 				B738D2FA298DAC9C002E4D22 /* FundsApp.swift */,
-				B738D2FC298DAC9C002E4D22 /* ContentView.swift */,
+				B7888A93298DBE8A007EB248 /* Managers */,
+				B787C55A298DB9CB003BBECD /* Models */,
+				B787C55C298DB9DF003BBECD /* ViewModels */,
+				B787C55B298DB9DB003BBECD /* Views */,
 				B738D2FE298DAC9D002E4D22 /* Assets.xcassets */,
 				B738D309298DACB5002E4D22 /* GoogleService-Info.plist */,
+				B787C559298DB910003BBECD /* Info.plist */,
 				B738D303298DAC9D002E4D22 /* Funds.entitlements */,
 				B738D300298DAC9D002E4D22 /* Preview Content */,
 			);
@@ -70,6 +88,44 @@
 				B738D301298DAC9D002E4D22 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B787C55A298DB9CB003BBECD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B7888A91298DBE32007EB248 /* Year.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B787C55B298DB9DB003BBECD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B738D2FC298DAC9C002E4D22 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B787C55C298DB9DF003BBECD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B7888A93298DBE8A007EB248 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B7888A94298DBEA3007EB248 /* FirestoreManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B7888A96298DBEDE007EB248 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,6 +144,12 @@
 			dependencies = (
 			);
 			name = Funds;
+			packageProductDependencies = (
+				B79C14F7298DB1FD00978C9F /* FirebaseAnalytics */,
+				B79C14F9298DB1FD00978C9F /* FirebaseAuth */,
+				B79C14FB298DB1FD00978C9F /* FirebaseFirestore */,
+				B7888A97298DBEDE007EB248 /* FirebaseFirestoreSwift */,
+			);
 			productName = Funds;
 			productReference = B738D2F7298DAC9C002E4D22 /* Funds.app */;
 			productType = "com.apple.product-type.application";
@@ -116,6 +178,9 @@
 				Base,
 			);
 			mainGroup = B738D2EE298DAC9C002E4D22;
+			packageReferences = (
+				B79C14F6298DB1FD00978C9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B738D2F8298DAC9C002E4D22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,7 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B738D2FD298DAC9C002E4D22 /* ContentView.swift in Sources */,
+				B7888A92298DBE32007EB248 /* Year.swift in Sources */,
 				B738D2FB298DAC9C002E4D22 /* FundsApp.swift in Sources */,
+				B7888A95298DBEA3007EB248 /* FirestoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +345,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Funds/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +373,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Funds/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,6 +409,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B79C14F6298DB1FD00978C9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7888A97298DBEDE007EB248 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79C14F6298DB1FD00978C9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		B79C14F7298DB1FD00978C9F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79C14F6298DB1FD00978C9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B79C14F9298DB1FD00978C9F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79C14F6298DB1FD00978C9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B79C14FB298DB1FD00978C9F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79C14F6298DB1FD00978C9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B738D2EF298DAC9C002E4D22 /* Project object */;
 }
