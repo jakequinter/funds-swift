@@ -18,6 +18,8 @@
 		B79C14F8298DB1FD00978C9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14F7298DB1FD00978C9F /* FirebaseAnalytics */; };
 		B79C14FA298DB1FD00978C9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14F9298DB1FD00978C9F /* FirebaseAuth */; };
 		B79C14FC298DB1FD00978C9F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14FB298DB1FD00978C9F /* FirebaseFirestore */; };
+		B7F26C962992F908005DFE88 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C952992F908005DFE88 /* LoginViewModel.swift */; };
+		B7F26C982992F9A4005DFE88 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C972992F9A4005DFE88 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		B787C559298DB910003BBECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B7888A91298DBE32007EB248 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		B7888A94298DBEA3007EB248 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		B7F26C952992F908005DFE88 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B7F26C972992F9A4005DFE88 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B738D2FC298DAC9C002E4D22 /* ContentView.swift */,
+				B7F26C972992F9A4005DFE88 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 		B787C55C298DB9DF003BBECD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B7F26C952992F908005DFE88 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,9 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7F26C982992F9A4005DFE88 /* LoginView.swift in Sources */,
 				B738D2FD298DAC9C002E4D22 /* ContentView.swift in Sources */,
 				B7888A92298DBE32007EB248 /* Year.swift in Sources */,
 				B738D2FB298DAC9C002E4D22 /* FundsApp.swift in Sources */,
+				B7F26C962992F908005DFE88 /* LoginViewModel.swift in Sources */,
 				B7888A95298DBEA3007EB248 /* FirestoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +345,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Funds/Funds.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -365,6 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Funds/Funds.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
