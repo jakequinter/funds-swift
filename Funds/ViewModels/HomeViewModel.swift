@@ -9,7 +9,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import Foundation
 
-@MainActor class ContentViewModel: ObservableObject {
+@MainActor class HomeViewModel: ObservableObject {
     @Published var years = [Year]()
     @Published var months = [Month]()
    

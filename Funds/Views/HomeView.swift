@@ -8,9 +8,9 @@
 import Firebase
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @StateObject var authentication = LoginViewModel()
-    @ObservedObject private var viewModel = ContentViewModel()
+    @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
     @State private var selectedYear = 2023
@@ -59,6 +59,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }

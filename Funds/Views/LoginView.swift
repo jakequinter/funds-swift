@@ -23,7 +23,7 @@ struct LoginView: View {
                 }
             }
             .navigationDestination(isPresented: $authentication.isAuthenticated) {
-                ContentView()
+                HomeView()
             }
         }
     }

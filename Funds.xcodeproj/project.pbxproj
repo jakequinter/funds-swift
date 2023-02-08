@@ -8,35 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		B738D2FB298DAC9C002E4D22 /* FundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B738D2FA298DAC9C002E4D22 /* FundsApp.swift */; };
-		B738D2FD298DAC9C002E4D22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B738D2FC298DAC9C002E4D22 /* ContentView.swift */; };
 		B738D2FF298DAC9D002E4D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B738D2FE298DAC9D002E4D22 /* Assets.xcassets */; };
 		B738D302298DAC9D002E4D22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B738D301298DAC9D002E4D22 /* Preview Assets.xcassets */; };
 		B738D30A298DACB5002E4D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B738D309298DACB5002E4D22 /* GoogleService-Info.plist */; };
 		B7792E452994603900426535 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7792E442994603900426535 /* Month.swift */; };
+		B783DE3D2994650500285C83 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783DE3C2994650500285C83 /* HomeView.swift */; };
 		B7888A92298DBE32007EB248 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7888A91298DBE32007EB248 /* Year.swift */; };
 		B7888A95298DBEA3007EB248 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7888A94298DBEA3007EB248 /* FirestoreManager.swift */; };
 		B7888A98298DBEDE007EB248 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7888A97298DBEDE007EB248 /* FirebaseFirestoreSwift */; };
 		B79C14FA298DB1FD00978C9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14F9298DB1FD00978C9F /* FirebaseAuth */; };
 		B7F26C962992F908005DFE88 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C952992F908005DFE88 /* LoginViewModel.swift */; };
 		B7F26C982992F9A4005DFE88 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C972992F9A4005DFE88 /* LoginView.swift */; };
-		B7F26C9A29930D68005DFE88 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C9929930D68005DFE88 /* ContentViewModel.swift */; };
+		B7F26C9A29930D68005DFE88 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C9929930D68005DFE88 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B738D2F7298DAC9C002E4D22 /* Funds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B738D2FA298DAC9C002E4D22 /* FundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundsApp.swift; sourceTree = "<group>"; };
-		B738D2FC298DAC9C002E4D22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B738D2FE298DAC9D002E4D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B738D301298DAC9D002E4D22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B738D303298DAC9D002E4D22 /* Funds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Funds.entitlements; sourceTree = "<group>"; };
 		B738D309298DACB5002E4D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B7792E442994603900426535 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		B783DE3C2994650500285C83 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B787C559298DB910003BBECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B7888A91298DBE32007EB248 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		B7888A94298DBEA3007EB248 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		B7F26C952992F908005DFE88 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B7F26C972992F9A4005DFE88 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		B7F26C9929930D68005DFE88 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		B7F26C9929930D68005DFE88 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +97,8 @@
 		B787C55A298DB9CB003BBECD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B7888A91298DBE32007EB248 /* Year.swift */,
 				B7792E442994603900426535 /* Month.swift */,
+				B7888A91298DBE32007EB248 /* Year.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,8 +106,8 @@
 		B787C55B298DB9DB003BBECD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B738D2FC298DAC9C002E4D22 /* ContentView.swift */,
 				B7F26C972992F9A4005DFE88 /* LoginView.swift */,
+				B783DE3C2994650500285C83 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,8 +115,8 @@
 		B787C55C298DB9DF003BBECD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B7F26C9929930D68005DFE88 /* HomeViewModel.swift */,
 				B7F26C952992F908005DFE88 /* LoginViewModel.swift */,
-				B7F26C9929930D68005DFE88 /* ContentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -215,11 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7F26C982992F9A4005DFE88 /* LoginView.swift in Sources */,
-				B738D2FD298DAC9C002E4D22 /* ContentView.swift in Sources */,
 				B7888A92298DBE32007EB248 /* Year.swift in Sources */,
-				B7F26C9A29930D68005DFE88 /* ContentViewModel.swift in Sources */,
+				B7F26C9A29930D68005DFE88 /* HomeViewModel.swift in Sources */,
 				B7792E452994603900426535 /* Month.swift in Sources */,
 				B738D2FB298DAC9C002E4D22 /* FundsApp.swift in Sources */,
+				B783DE3D2994650500285C83 /* HomeView.swift in Sources */,
 				B7F26C962992F908005DFE88 /* LoginViewModel.swift in Sources */,
 				B7888A95298DBEA3007EB248 /* FirestoreManager.swift in Sources */,
 			);
