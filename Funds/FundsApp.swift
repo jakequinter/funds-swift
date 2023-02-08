@@ -10,6 +10,7 @@ import SwiftUI
 
 @main
 struct FundsApp: App {
+    @EnvironmentObject var authentication: LoginViewModel
     
     init() {
         FirebaseApp.configure()
@@ -17,7 +18,7 @@ struct FundsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            ContentView()
         }
     }
 }

@@ -5,31 +5,54 @@
 //  Created by Jake Quinter on 2/3/23.
 //
 
+import Firebase
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedMonth = "February"
-    @State private var selectedYear = "2023"
-    // TODO: replace hardcodes years with results from fetching firebase
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    let years = ["2018", "2019", "2020", "2021", "2022", "2023"].reversed()
+    @StateObject var authentication = LoginViewModel()
+    @ObservedObject private var viewModel = ContentViewModel()
+    
+    @State private var displayName: String
+    @State private var selectedYear = 2023
+    @State private var selectedMonth = "January"
+    
+    init() {
+        displayName = Auth.auth().currentUser?.email ?? ""
+    }
     
     var body: some View {
-        NavigationSplitView {
-            List(months, id: \.self, selection: $selectedMonth) {
-                Text($0)
-            }
-            .frame(minWidth: 100)
-        } detail: {
-            Text("show list of monthly expenses for \(selectedMonth) \(selectedYear)")
-        }
-        .toolbar {
-            Picker("Options", selection: $selectedYear) {
-                ForEach(years, id: \.self) {
-                    Text($0)
+        if !authentication.isAuthenticated {
+            LoginView()
+        } else {
+            NavigationSplitView {
+                List(viewModel.months, selection: $selectedMonth) {
+                    Text($0.month)
+                        .tag($0.month)
                 }
+                .frame(minWidth: 100)
+            } detail: {
+                Text("show list of monthly expenses for selected month/year")
             }
-            .scaledToFill()
+            .navigationTitle("Welcome \(displayName)")
+            .toolbar {
+                Picker("Options", selection: $selectedYear) {
+                    ForEach(viewModel.years.sorted().reversed(), id: \.id) {
+                        Text(String($0.year))
+                            .tag($0.year)
+                    }
+                }
+                .scaledToFill()
+            }
+            .onAppear() {
+                print("calling getYears")
+                self.viewModel.fetchYearsForUser()
+                self.viewModel.fetchMonthsForUser()
+                print("years \(viewModel.years)")
+            }
+            .onChange(of: authentication.isAuthenticated) { newValue in
+                print("new value is: \(newValue)")
+            }
+            .environmentObject(authentication)
         }
     }
 }

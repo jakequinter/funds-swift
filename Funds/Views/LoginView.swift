@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject var authentication = LoginViewModel()
     @ObservedObject private var loginVM = LoginViewModel()
-    @State var isActive: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack {
                 TextField("Email", text: $loginVM.email)
-                TextField("Passwored", text: $loginVM.password)
+                TextField("Password", text: $loginVM.password)
                 Button("Login") {
                     loginVM.login {
-                        isActive = true
+                        authentication.isAuthenticated = true
                     }
                 }
             }
-            .navigationDestination(isPresented: $isActive) {
+            .navigationDestination(isPresented: $authentication.isAuthenticated) {
                 ContentView()
             }
         }
