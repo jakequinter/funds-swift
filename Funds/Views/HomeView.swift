@@ -13,7 +13,6 @@ struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
-    @State private var selectedYear = 2023
     @State private var selectedMonth = "January"
     
     init() {
@@ -35,22 +34,19 @@ struct HomeView: View {
             }
             .navigationTitle("Welcome \(displayName)")
             .toolbar {
-                Picker("Options", selection: $selectedYear) {
+                Picker("Options", selection: $viewModel.selectedYear) {
                     ForEach(viewModel.years.sorted().reversed(), id: \.id) {
                         Text(String($0.year))
-                            .tag($0.year)
+                            .tag($0)
                     }
                 }
                 .scaledToFill()
             }
             .onAppear() {
-                print("calling getYears")
                 self.viewModel.fetchYearsForUser()
-                self.viewModel.fetchMonthsForUser()
-                print("years \(viewModel.years)")
             }
-            .onChange(of: authentication.isAuthenticated) { newValue in
-                print("new value is: \(newValue)")
+            .onChange(of: viewModel.selectedYear) { newValue in
+                self.viewModel.fetchMonthsForYear()
             }
             .environmentObject(authentication)
         }

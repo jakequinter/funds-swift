@@ -11,8 +11,9 @@ import Foundation
 
 @MainActor class HomeViewModel: ObservableObject {
     @Published var years = [Year]()
+    @Published var selectedYear = Year(id: "1", userId: "1", year: 1)
     @Published var months = [Month]()
-   
+    
     private var db = Firestore.firestore()
     
     func fetchYearsForUser() {
@@ -24,17 +25,25 @@ import Foundation
                 return
             }
             
-            self.years = documents.compactMap { queryDocumentSnapshot -> Year? in
+            let years = documents.compactMap { queryDocumentSnapshot -> Year? in
                 return try? queryDocumentSnapshot.data(as: Year.self)
             }
+            
+            self.years = years
+            
+            if (years.count > 0) {
+                self.selectedYear = years.sorted().reversed().first!
+                print(self.selectedYear)
+            }
         }
-      
+        
     }
     
-    func fetchMonthsForUser() {
+    func fetchMonthsForYear() {
         guard let _ = Auth.auth().currentUser else { return }
+        guard let _ = selectedYear.id else { return }
         
-        db.collection("months").whereField("yearId", isEqualTo: "FgJQ9q4RqXjFKIJRw3kQ").addSnapshotListener{ (querySnapshot, error) in
+        db.collection("months").whereField("yearId", isEqualTo: self.selectedYear.id).addSnapshotListener{ (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No months")
                 return
@@ -43,7 +52,6 @@ import Foundation
             self.months = documents.compactMap { queryDocumentSnapshot -> Month? in
                 return try? queryDocumentSnapshot.data(as: Month.self)
             }
-            print("months: \(self.months)")
         }
     }
 }
