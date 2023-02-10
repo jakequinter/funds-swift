@@ -15,6 +15,7 @@ import Foundation
     @Published var accounts = [Account]()
     @Published var selectedYear = Year(id: "1", userId: "1", year: 1)
     @Published var selectedMonth = Month(id: "1", yearId: "1", month: "test")
+    @Published var accountItems = [AccountItem] ()
     
     private var db = Firestore.firestore()
     
@@ -74,6 +75,29 @@ import Foundation
             
             self.accounts = documents.compactMap { queryDocumentSnapshot -> Account? in
                 return try? queryDocumentSnapshot.data(as: Account.self)
+            }
+            
+            self.fetchAccountItems()
+        }
+    }
+    
+    func fetchAccountItems() {
+        guard let _ = selectedMonth.id else { return }
+        
+        self.accountItems = []
+        
+        for account in self.accounts {
+            db.collection("accounts").document(account.id!).collection("items").addSnapshotListener { (querySnapshot, error) in
+                guard let documents = querySnapshot?.documents else {
+                    print("No account items")
+                    return
+                }
+                
+                let accountItems = documents.compactMap { queryDocumentSnapshot -> AccountItem? in
+                    return try? queryDocumentSnapshot.data(as: AccountItem.self)
+                }
+                
+                self.accountItems.append(contentsOf: accountItems)
             }
         }
     }

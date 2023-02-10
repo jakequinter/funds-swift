@@ -13,7 +13,7 @@ struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
-//    @State private var selectedMonth = "January"
+    //    @State private var selectedMonth = "January"
     
     init() {
         displayName = Auth.auth().currentUser?.email ?? ""
@@ -30,8 +30,9 @@ struct HomeView: View {
                 }
                 .frame(minWidth: 100)
             } detail: {
-                List(viewModel.accounts) {
-                    Text($0.name)
+                //                AccountsView()
+                List(viewModel.accountItems) {
+                    Text("\($0.name): \($0.amount, specifier: "%.2f")")
                 }
             }
             .navigationTitle("Welcome \(displayName)")
