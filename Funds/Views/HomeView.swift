@@ -13,7 +13,7 @@ struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
-    @State private var selectedMonth = "January"
+//    @State private var selectedMonth = "January"
     
     init() {
         displayName = Auth.auth().currentUser?.email ?? ""
@@ -24,13 +24,15 @@ struct HomeView: View {
             LoginView()
         } else {
             NavigationSplitView {
-                List(viewModel.months, selection: $selectedMonth) {
+                List(viewModel.months, selection: $viewModel.selectedMonth) {
                     Text($0.month)
-                        .tag($0.month)
+                        .tag($0)
                 }
                 .frame(minWidth: 100)
             } detail: {
-                Text("show list of monthly expenses for selected month/year")
+                List(viewModel.accounts) {
+                    Text($0.name)
+                }
             }
             .navigationTitle("Welcome \(displayName)")
             .toolbar {
@@ -47,6 +49,9 @@ struct HomeView: View {
             }
             .onChange(of: viewModel.selectedYear) { newValue in
                 self.viewModel.fetchMonthsForYear()
+            }
+            .onChange(of: viewModel.selectedMonth) { newValue in
+                self.viewModel.fetchAccountForMonth()
             }
             .environmentObject(authentication)
         }
