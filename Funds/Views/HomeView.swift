@@ -22,34 +22,23 @@ struct HomeView: View {
         if !authentication.isAuthenticated {
             LoginView()
         } else {
-            NavigationSplitView {
-                List(viewModel.months, selection: $viewModel.selectedMonth) {
-                    Text($0.month)
-                        .tag($0)
-                }
-                .frame(minWidth: 100)
-            } detail: {
-                AccountsView(accounts: viewModel.accounts, accountItems: viewModel.accountItems)
-            }
-            .navigationTitle("Welcome \(displayName)")
-            .toolbar {
-                Picker("Options", selection: $viewModel.selectedYear) {
-                    ForEach(viewModel.years.sorted().reversed(), id: \.id) {
-                        Text(String($0.year))
-                            .tag($0)
+            NavigationView {
+                List(viewModel.accounts) { account in
+                    Section(account.name) {
+                        ForEach(viewModel.accountItems.filter { $0.accountId == account.id }) { item in
+                            HStack {
+                                Text(item.name)
+                                Spacer()
+                                Text("$\(item.amount, specifier: "%.2f")")
+                            }
+                        }
                     }
                 }
-                .scaledToFill()
+                .navigationTitle("\(viewModel.month?.name ?? ""), \(String(viewModel.year?.year ?? 0))")
             }
+            
             .onAppear() {
-                self.viewModel.fetchYearsForUser()
-            }
-            .onChange(of: viewModel.selectedYear) { newValue in
-                self.viewModel.fetchMonthsForYear()
-            }
-            .onChange(of: viewModel.selectedMonth) { newValue in
-                print("changing selected month")
-                self.viewModel.fetchAccountsForMonth()
+                self.viewModel.fetchData()
             }
             .environmentObject(authentication)
         }

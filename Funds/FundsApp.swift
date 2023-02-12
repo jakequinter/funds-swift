@@ -11,6 +11,8 @@ import SwiftUI
 @main
 struct FundsApp: App {
     @EnvironmentObject var authentication: LoginViewModel
+    @State private var selectedTab = "Home"
+    
     
     init() {
         FirebaseApp.configure()
@@ -18,7 +20,19 @@ struct FundsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            TabView(selection: $selectedTab) {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                    .tag("Home")
+                
+                HistoryView()
+                    .tabItem {
+                        Label("History", systemImage: "calendar")
+                    }
+                    .tag("History")
+            }
         }
     }
 }

@@ -10,16 +10,14 @@ import FirebaseFirestoreSwift
 import Foundation
 
 @MainActor class HomeViewModel: ObservableObject {
-    @Published var years = [Year]()
-    @Published var months = [Month]()
+    @Published var year: Year?
+    @Published var month: Month?
     @Published var accounts = [Account]()
-    @Published var selectedYear = Year(id: "1", userId: "1", year: 1)
-    @Published var selectedMonth = Month(id: "1", yearId: "1", month: "test")
     @Published var accountItems = [AccountItem]()
     
     private var db = Firestore.firestore()
     
-    func fetchYearsForUser() {
+    func fetchData() {
         guard let currentUser = Auth.auth().currentUser else { return }
         
         db.collection("years").whereField("userId", isEqualTo: currentUser.uid).addSnapshotListener { (querySnapshot, error) in
@@ -32,20 +30,21 @@ import Foundation
                 return try? queryDocumentSnapshot.data(as: Year.self)
             }
             
-            self.years = years
             
-            if (self.years.count > 0) {
-                self.selectedYear = self.years.sorted().reversed().first!
+            if (years.count > 0) {
+                self.year = years.sorted().first!
+                
+                if let yearId = self.year?.id {
+                    self.fetchMonthsForYear(yearId: yearId)
+                }
             }
         }
     }
     
-    func fetchMonthsForYear() {
-        print("fetching months for year")
+    func fetchMonthsForYear(yearId: String) {
         guard let _ = Auth.auth().currentUser else { return }
-        guard let _ = selectedYear.id else { return }
         
-        db.collection("months").whereField("yearId", isEqualTo: self.selectedYear.id!).addSnapshotListener { (querySnapshot, error) in
+        db.collection("months").whereField("yearId", isEqualTo: yearId).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No months")
                 return
@@ -55,37 +54,33 @@ import Foundation
                 return try? queryDocumentSnapshot.data(as: Month.self)
             }
             
-            self.months = months
-            
             if (months.count > 0) {
-                self.selectedMonth = months.first!
+                self.month = months.sorted().first!
+                if let monthId = self.month?.id {
+                    self.fetchAccountsForMonth(monthId: monthId)
+                }
             }
-            self.fetchAccountsForMonth()
         }
     }
     
-    func fetchAccountsForMonth() {
+    func fetchAccountsForMonth(monthId: String) {
         guard let _ = Auth.auth().currentUser else { return }
-        guard let _ =  selectedMonth.id else { return }
-        print("fetchingAccountsForMOnth()")
-        
-        db.collection("accounts").whereField("monthId", isEqualTo: self.selectedMonth.id!).addSnapshotListener { (querySnapshot, error) in
+
+        db.collection("accounts").whereField("monthId", isEqualTo: monthId).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts")
                 return
             }
-            
+
             self.accounts = documents.compactMap { queryDocumentSnapshot -> Account? in
                 return try? queryDocumentSnapshot.data(as: Account.self)
             }
-            
+
             self.fetchAccountItems()
         }
     }
     
     func fetchAccountItems() {
-        guard let _ = selectedMonth.id else { return }
-        
         self.accountItems = []
         
         for account in self.accounts {

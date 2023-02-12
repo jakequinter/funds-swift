@@ -14,6 +14,6 @@ struct Year: Codable, Comparable, Hashable, Identifiable {
     var year: Int
     
     static func <(lhs: Year, rhs: Year) -> Bool {
-        return lhs.year < rhs.year
+        return lhs.year > rhs.year
     }
 }

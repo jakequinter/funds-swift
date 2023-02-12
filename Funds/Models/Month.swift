@@ -8,8 +8,13 @@
 import FirebaseFirestoreSwift
 import Foundation
 
-struct Month: Codable, Hashable, Identifiable {
+struct Month: Codable, Comparable, Hashable, Identifiable {
     @DocumentID var id: String?
     let yearId: String
-    let month: String
+    let name: String
+    let month: Int
+    
+    static func <(lhs: Month, rhs: Month) -> Bool {
+        return lhs.month > rhs.month
+    }
 }
