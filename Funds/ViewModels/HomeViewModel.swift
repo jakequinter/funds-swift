@@ -34,11 +34,10 @@ import Foundation
             
             self.years = years
             
-            if (years.count > 0) {
-                self.selectedYear = years.sorted().reversed().first!
+            if (self.years.count > 0) {
+                self.selectedYear = self.years.sorted().reversed().first!
             }
         }
-        
     }
     
     func fetchMonthsForYear() {

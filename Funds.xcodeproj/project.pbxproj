@@ -19,6 +19,7 @@
 		B7888A95298DBEA3007EB248 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7888A94298DBEA3007EB248 /* FirestoreManager.swift */; };
 		B7888A98298DBEDE007EB248 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7888A97298DBEDE007EB248 /* FirebaseFirestoreSwift */; };
 		B79C14FA298DB1FD00978C9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B79C14F9298DB1FD00978C9F /* FirebaseAuth */; };
+		B7A49CB529994338000F99D0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A49CB429994338000F99D0 /* Color.swift */; };
 		B7DC5B5A2996E1B000718BE2 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC5B592996E1B000718BE2 /* AccountItem.swift */; };
 		B7F26C962992F908005DFE88 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C952992F908005DFE88 /* LoginViewModel.swift */; };
 		B7F26C982992F9A4005DFE88 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F26C972992F9A4005DFE88 /* LoginView.swift */; };
@@ -39,6 +40,7 @@
 		B787C559298DB910003BBECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B7888A91298DBE32007EB248 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		B7888A94298DBEA3007EB248 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		B7A49CB429994338000F99D0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		B7DC5B592996E1B000718BE2 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		B7F26C952992F908005DFE88 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B7F26C972992F9A4005DFE88 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		B738D2F9298DAC9C002E4D22 /* Funds */ = {
 			isa = PBXGroup;
 			children = (
+				B7A49CB32999432B000F99D0 /* Extensions */,
 				B738D2FA298DAC9C002E4D22 /* FundsApp.swift */,
 				B7888A93298DBE8A007EB248 /* Managers */,
 				B787C55A298DB9CB003BBECD /* Models */,
@@ -123,9 +126,9 @@
 		B787C55C298DB9DF003BBECD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B745ED1029969DCE00B3B9C0 /* AccountsView.swift */,
 				B7F26C9929930D68005DFE88 /* HomeViewModel.swift */,
 				B7F26C952992F908005DFE88 /* LoginViewModel.swift */,
-				B745ED1029969DCE00B3B9C0 /* AccountsView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -143,6 +146,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7A49CB32999432B000F99D0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B7A49CB429994338000F99D0 /* Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				B7888A92298DBE32007EB248 /* Year.swift in Sources */,
 				B7F26C9A29930D68005DFE88 /* HomeViewModel.swift in Sources */,
 				B7792E452994603900426535 /* Month.swift in Sources */,
+				B7A49CB529994338000F99D0 /* Color.swift in Sources */,
 				B738D2FB298DAC9C002E4D22 /* FundsApp.swift in Sources */,
 				B74B2667299692DB00AA4A20 /* Account.swift in Sources */,
 				B7DC5B5A2996E1B000718BE2 /* AccountItem.swift in Sources */,

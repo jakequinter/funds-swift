@@ -30,10 +30,10 @@ struct HomeView: View {
                 }
                 .frame(minWidth: 100)
             } detail: {
-                //                AccountsView()
-                List(viewModel.accountItems) {
-                    Text("\($0.name): \($0.amount, specifier: "%.2f")")
-                }
+                AccountsView()
+//                List(viewModel.accountItems) {
+//                    Text("\($0.name): \($0.amount, specifier: "%.2f")")
+//                }
             }
             .navigationTitle("Welcome \(displayName)")
             .toolbar {
