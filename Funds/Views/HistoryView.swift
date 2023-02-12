@@ -14,8 +14,10 @@ struct HistoryView: View {
         NavigationStack {
             List(viewModel.years) { year in
                 Section(String(year.year)) {
-                    ForEach(viewModel.months.filter { $0.yearId == year.id }) {
-                        Text($0.name)
+                    ForEach(viewModel.months.filter { $0.yearId == year.id }) { month in
+                        NavigationLink(month.name) {
+                            Text(month.name)
+                        }
                     }
                 }
             }
