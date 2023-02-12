@@ -13,7 +13,6 @@ struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
-    //    @State private var selectedMonth = "January"
     
     init() {
         displayName = Auth.auth().currentUser?.email ?? ""
@@ -30,10 +29,7 @@ struct HomeView: View {
                 }
                 .frame(minWidth: 100)
             } detail: {
-                AccountsView()
-//                List(viewModel.accountItems) {
-//                    Text("\($0.name): \($0.amount, specifier: "%.2f")")
-//                }
+                AccountsView(accounts: viewModel.accounts, accountItems: viewModel.accountItems)
             }
             .navigationTitle("Welcome \(displayName)")
             .toolbar {
@@ -52,7 +48,8 @@ struct HomeView: View {
                 self.viewModel.fetchMonthsForYear()
             }
             .onChange(of: viewModel.selectedMonth) { newValue in
-                self.viewModel.fetchAccountForMonth()
+                print("changing selected month")
+                self.viewModel.fetchAccountsForMonth()
             }
             .environmentObject(authentication)
         }

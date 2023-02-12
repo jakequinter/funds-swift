@@ -15,7 +15,7 @@ import Foundation
     @Published var accounts = [Account]()
     @Published var selectedYear = Year(id: "1", userId: "1", year: 1)
     @Published var selectedMonth = Month(id: "1", yearId: "1", month: "test")
-    @Published var accountItems = [AccountItem] ()
+    @Published var accountItems = [AccountItem]()
     
     private var db = Firestore.firestore()
     
@@ -41,6 +41,7 @@ import Foundation
     }
     
     func fetchMonthsForYear() {
+        print("fetching months for year")
         guard let _ = Auth.auth().currentUser else { return }
         guard let _ = selectedYear.id else { return }
         
@@ -59,12 +60,14 @@ import Foundation
             if (months.count > 0) {
                 self.selectedMonth = months.first!
             }
+            self.fetchAccountsForMonth()
         }
     }
     
-    func fetchAccountForMonth() {
+    func fetchAccountsForMonth() {
         guard let _ = Auth.auth().currentUser else { return }
         guard let _ =  selectedMonth.id else { return }
+        print("fetchingAccountsForMOnth()")
         
         db.collection("accounts").whereField("monthId", isEqualTo: self.selectedMonth.id!).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
@@ -86,7 +89,7 @@ import Foundation
         self.accountItems = []
         
         for account in self.accounts {
-            db.collection("accounts").document(account.id!).collection("items").addSnapshotListener { (querySnapshot, error) in
+            db.collection("items").whereField("accountId", isEqualTo: account.id! ).addSnapshotListener { (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     print("No account items")
                     return

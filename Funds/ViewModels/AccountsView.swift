@@ -8,32 +8,41 @@
 import SwiftUI
 
 struct AccountsView: View {
-    let data = (1...5).map { "Item \($0)" }
+    let accounts: [Account]
+    let accountItems: [AccountItem]
     
     var body: some View {
-        NavigationStack {
-            Text("Community First CU")
-                .multilineTextAlignment(.center)
-                .font(.largeTitle.bold())
-                .foregroundColor(.primary)
-            
-            ForEach(data, id: \.self) { item in
-                HStack {
-                    Text("Checking")
-                    Spacer()
-                    Text("$5.78")
+        VStack {
+            HStack {
+                ForEach(accounts) { account in
+                    VStack {
+                        Text(account.name)
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle.bold())
+                            .foregroundColor(.primary)
+                        
+                        ForEach(accountItems.filter { $0.accountId == account.id }) { item in
+                            HStack {
+                                Text(item.name)
+                                Spacer()
+                                Text("$\(item.amount, specifier: "%.2f")")
+                            }
+                            .padding(16)
+                            .background(RoundedRectangle(cornerRadius: 34).fill(.ultraThinMaterial))
+                        }
+                    }
+                    .padding(20)
+                    .background(RoundedRectangle(cornerRadius: 40).fill(Color.emerald).shadow(radius: 3))
                 }
-                .padding(16)
-                .background(RoundedRectangle(cornerRadius: 34).fill(.ultraThinMaterial))
             }
+            Spacer()
         }
-        .padding(20)
-        .background(RoundedRectangle(cornerRadius: 40).fill(Color.emerald).shadow(radius: 3))
+        .padding()
     }
 }
 
-struct AccountsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountsView()
-    }
-}
+//struct AccountsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountsView()
+//    }
+//}
