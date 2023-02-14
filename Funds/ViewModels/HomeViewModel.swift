@@ -95,8 +95,36 @@ import Foundation
         }
     }
     
+    func deleteAccount(accountId: String?) {
+        // TODO: check if empty string make guard called
+        guard let accountId = accountId else {
+            print("No account ID")
+            return
+        }
+        
+        db.collection("accounts").document(accountId).delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        for item in self.accountItems {
+            if item.accountId == accountId {
+                db.collection("items").document(item.accountId).delete { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        
+    }
+    
     func deleteAccountItem(accountItemId: String?) {
-        guard let accountItemId = accountItemId else { return }
+        guard let accountItemId = accountItemId else {
+            print("No account item ID")
+            return
+        }
         
         db.collection("items").document(accountItemId).delete { error in
             if let error = error {

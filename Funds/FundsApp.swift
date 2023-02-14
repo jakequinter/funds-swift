@@ -27,6 +27,12 @@ struct FundsApp: App {
                     }
                     .tag("Home")
                 
+                AccountsView()
+                    .tabItem {
+                        Label("Accounts", systemImage: "tag")
+                    }
+                    .tag("Accounts")
+                
                 HistoryView()
                     .tabItem {
                         Label("History", systemImage: "calendar")
