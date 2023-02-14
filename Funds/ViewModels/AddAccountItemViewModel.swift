@@ -21,7 +21,7 @@ class AddAccountItemViewModel: ObservableObject {
         self.accountItem = AccountItem(id: "", accountId: "", name: "", amount: 0)
     }
     
-    func addAccount() {
+    func addAccountItem() {
         do {
             let newDocReference = try db.collection("items").addDocument(from: self.accountItem)
         }

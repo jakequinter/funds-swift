@@ -13,7 +13,8 @@ struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
-    @State private var showingSheet = false
+    @State private var showingAddAccountSheet = false
+    @State private var showingAddItemSheet = false
     
     init() {
         displayName = Auth.auth().currentUser?.email ?? ""
@@ -38,8 +39,15 @@ struct HomeView: View {
                 .navigationTitle("\(viewModel.month?.name ?? ""), \(String(viewModel.year?.year ?? 0))")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Press Me") {
-                            showingSheet = true
+                        Menu {
+                            Button("Add item") {
+                                showingAddItemSheet = true
+                            }
+                            Button("Add account") {
+                                showingAddAccountSheet = true
+                            }
+                        } label: {
+                            Image(systemName: "plus")
                         }
                     }
                 }
@@ -48,7 +56,10 @@ struct HomeView: View {
             .onAppear() {
                 self.viewModel.fetchData()
             }
-            .sheet(isPresented: $showingSheet) {
+            .sheet(isPresented: $showingAddAccountSheet) {
+                AddAccountView(monthId: viewModel.month?.id ?? "")
+            }
+            .sheet(isPresented: $showingAddItemSheet) {
                 AddAccountItemView(monthId: viewModel.month?.id ?? "")
             }
             .environmentObject(authentication)

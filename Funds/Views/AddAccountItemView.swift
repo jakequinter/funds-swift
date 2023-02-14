@@ -26,12 +26,12 @@ struct AddAccountItemView: View {
                     }
                 }
                 Button("Add") {
-                    viewModel.addAccount()
+                    viewModel.addAccountItem()
                 }
                 Spacer()
             }
             .padding()
-            .navigationTitle("Add account")
+            .navigationTitle("Add account item")
             .alert(viewModel.errorMessage, isPresented: $viewModel.showingError) {
                 Button("OK") { }
             }
