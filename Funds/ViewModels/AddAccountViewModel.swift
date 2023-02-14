@@ -24,7 +24,7 @@ class AddAccountViewModel: ObservableObject {
         self.account.monthId = monthId
         
         do {
-            try db.collection("accounts").addDocument(from: self.account)
+            let _ = try db.collection("accounts").addDocument(from: self.account)
         }
         catch {
             print(error)

@@ -94,4 +94,14 @@ import Foundation
             }
         }
     }
+    
+    func deleteAccountItem(accountItemId: String?) {
+        guard let accountItemId = accountItemId else { return }
+        
+        db.collection("items").document(accountItemId).delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

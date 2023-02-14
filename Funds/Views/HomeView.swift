@@ -33,6 +33,11 @@ struct HomeView: View {
                                 Spacer()
                                 Text("$\(item.amount, specifier: "%.2f")")
                             }
+                            .swipeActions {
+                                Button("Delete", role: .destructive) {
+                                    viewModel.deleteAccountItem(accountItemId: item.id)
+                                }
+                            }
                         }
                     }
                 }

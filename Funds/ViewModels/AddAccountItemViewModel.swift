@@ -23,7 +23,7 @@ class AddAccountItemViewModel: ObservableObject {
     
     func addAccountItem() {
         do {
-            let newDocReference = try db.collection("items").addDocument(from: self.accountItem)
+            let _ = try db.collection("items").addDocument(from: self.accountItem)
         }
         catch {
             print(error)
