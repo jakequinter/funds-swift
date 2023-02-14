@@ -14,6 +14,8 @@
 		B7405368299971470064AF36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7405367299971470064AF36 /* Assets.xcassets */; };
 		B740536B299971470064AF36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B740536A299971470064AF36 /* Preview Assets.xcassets */; };
 		B784DE782999718B0065A91E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B784DE772999718B0065A91E /* GoogleService-Info.plist */; };
+		B7A491E8299AE30E004C6E94 /* AddAccountItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A491E7299AE30E004C6E94 /* AddAccountItemView.swift */; };
+		B7A491EA299AE628004C6E94 /* AddAccountItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A491E9299AE628004C6E94 /* AddAccountItemViewModel.swift */; };
 		B7EC4145299972CC000FE6CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B7EC4144299972CC000FE6CE /* FirebaseAuth */; };
 		B7EC4147299972CC000FE6CE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B7EC4146299972CC000FE6CE /* FirebaseFirestore */; };
 		B7EC4149299972CC000FE6CE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7EC4148299972CC000FE6CE /* FirebaseFirestoreSwift */; };
@@ -37,6 +39,8 @@
 		B740536A299971470064AF36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B784DE772999718B0065A91E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B784DE79299971AA0065A91E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B7A491E7299AE30E004C6E94 /* AddAccountItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountItemView.swift; sourceTree = "<group>"; };
+		B7A491E9299AE628004C6E94 /* AddAccountItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountItemViewModel.swift; sourceTree = "<group>"; };
 		B7EC414F2999742E000FE6CE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		B7EC41512999743D000FE6CE /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		B7EC41532999744A000FE6CE /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 		B7EC414D299973E6000FE6CE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B7A491E9299AE628004C6E94 /* AddAccountItemViewModel.swift */,
 				B72D65C7299982150030FBF2 /* HistoryViewModel.swift */,
 				B7EC41572999747F000FE6CE /* HomeViewModel.swift */,
 				B7EC41592999749F000FE6CE /* LoginViewModel.swift */,
@@ -133,6 +138,7 @@
 		B7EC414E299973EB000FE6CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B7A491E7299AE30E004C6E94 /* AddAccountItemView.swift */,
 				B72D65C5299981DE0030FBF2 /* HistoryView.swift */,
 				B7405365299971460064AF36 /* HomeView.swift */,
 				B7EC415B299974F8000FE6CE /* LoginView.swift */,
@@ -222,6 +228,7 @@
 				B7EC41522999743D000FE6CE /* AccountItem.swift in Sources */,
 				B7EC416029997A47000FE6CE /* Color.swift in Sources */,
 				B7405366299971460064AF36 /* HomeView.swift in Sources */,
+				B7A491E8299AE30E004C6E94 /* AddAccountItemView.swift in Sources */,
 				B7EC41582999747F000FE6CE /* HomeViewModel.swift in Sources */,
 				B7EC415C299974F8000FE6CE /* LoginView.swift in Sources */,
 				B72D65C6299981DE0030FBF2 /* HistoryView.swift in Sources */,
@@ -230,6 +237,7 @@
 				B7EC415A2999749F000FE6CE /* LoginViewModel.swift in Sources */,
 				B7EC41542999744A000FE6CE /* Month.swift in Sources */,
 				B7EC41562999745E000FE6CE /* Year.swift in Sources */,
+				B7A491EA299AE628004C6E94 /* AddAccountItemViewModel.swift in Sources */,
 				B7EC41502999742E000FE6CE /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

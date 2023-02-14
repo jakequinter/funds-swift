@@ -8,9 +8,9 @@
 import FirebaseFirestoreSwift
 import Foundation
 
-struct AccountItem: Codable, Equatable, Identifiable {
+struct AccountItem: Codable, Equatable, Hashable, Identifiable {
     @DocumentID var id: String?
-    let accountId: String
+    var accountId: String
     var name: String
     var amount: Double
 }

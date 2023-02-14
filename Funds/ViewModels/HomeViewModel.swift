@@ -65,36 +65,32 @@ import Foundation
     
     func fetchAccountsForMonth(monthId: String) {
         guard let _ = Auth.auth().currentUser else { return }
-
+        
         db.collection("accounts").whereField("monthId", isEqualTo: monthId).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts")
                 return
             }
-
+            
             self.accounts = documents.compactMap { queryDocumentSnapshot -> Account? in
                 return try? queryDocumentSnapshot.data(as: Account.self)
             }
-
+            
             self.fetchAccountItems()
         }
     }
     
     func fetchAccountItems() {
-        self.accountItems = []
+        let accountIds = self.accounts.map { $0.id }
         
-        for account in self.accounts {
-            db.collection("items").whereField("accountId", isEqualTo: account.id! ).addSnapshotListener { (querySnapshot, error) in
-                guard let documents = querySnapshot?.documents else {
-                    print("No account items")
-                    return
-                }
-                
-                let accountItems = documents.compactMap { queryDocumentSnapshot -> AccountItem? in
-                    return try? queryDocumentSnapshot.data(as: AccountItem.self)
-                }
-                
-                self.accountItems.append(contentsOf: accountItems)
+        db.collection("items").whereField("accountId", in: accountIds as [Any]).addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No account items")
+                return
+            }
+            
+            self.accountItems = documents.compactMap { queryDocumentSnapshot -> AccountItem? in
+                return try? queryDocumentSnapshot.data(as: AccountItem.self)
             }
         }
     }

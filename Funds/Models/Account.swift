@@ -10,6 +10,6 @@ import Foundation
 
 struct Account: Codable, Equatable, Hashable, Identifiable {
     @DocumentID var id: String?
-    let monthId: String
-    let name: String
+    var monthId: String
+    var name: String
 }
