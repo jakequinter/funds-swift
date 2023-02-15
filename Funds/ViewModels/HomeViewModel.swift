@@ -10,8 +10,7 @@ import FirebaseFirestoreSwift
 import Foundation
 
 @MainActor class HomeViewModel: ObservableObject {
-    @Published var year: Year?
-    @Published var month: Month?
+    @Published var currentBudget: Budget?
     @Published var accounts = [Account]()
     @Published var accountItems = [AccountItem]()
     
@@ -20,53 +19,27 @@ import Foundation
     func fetchData() {
         guard let currentUser = Auth.auth().currentUser else { return }
         
-        db.collection("years").whereField("userId", isEqualTo: currentUser.uid).addSnapshotListener { (querySnapshot, error) in
+        db.collection("budgets").whereField("userId", isEqualTo: currentUser.uid).order(by: "year", descending: true).order(by: "month", descending: true).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
             }
             
-            let years = documents.compactMap { queryDocumentSnapshot -> Year? in
-                return try? queryDocumentSnapshot.data(as: Year.self)
+            let budgets = documents.compactMap { queryDocumentSnapshot -> Budget? in
+                return try? queryDocumentSnapshot.data(as: Budget.self)
             }
             
-            
-            if (years.count > 0) {
-                self.year = years.sorted().first!
-                
-                if let yearId = self.year?.id {
-                    self.fetchMonthsForYear(yearId: yearId)
-                }
+            if (budgets.count > 0) {
+                self.currentBudget = budgets.first!
+                self.fetchAccountsForCurrentBudget(budgetId: budgets.first!.id!)
             }
         }
     }
     
-    func fetchMonthsForYear(yearId: String) {
+    func fetchAccountsForCurrentBudget(budgetId: String) {
         guard let _ = Auth.auth().currentUser else { return }
         
-        db.collection("months").whereField("yearId", isEqualTo: yearId).addSnapshotListener { (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else {
-                print("No months")
-                return
-            }
-            
-            let months = documents.compactMap { queryDocumentSnapshot -> Month? in
-                return try? queryDocumentSnapshot.data(as: Month.self)
-            }
-            
-            if (months.count > 0) {
-                self.month = months.sorted().first!
-                if let monthId = self.month?.id {
-                    self.fetchAccountsForMonth(monthId: monthId)
-                }
-            }
-        }
-    }
-    
-    func fetchAccountsForMonth(monthId: String) {
-        guard let _ = Auth.auth().currentUser else { return }
-        
-        db.collection("accounts").whereField("monthId", isEqualTo: monthId).addSnapshotListener { (querySnapshot, error) in
+        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts")
                 return
@@ -117,7 +90,6 @@ import Foundation
                 }
             }
         }
-        
     }
     
     func deleteAccountItem(accountItemId: String?) {

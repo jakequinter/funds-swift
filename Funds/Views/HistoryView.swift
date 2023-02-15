@@ -12,22 +12,12 @@ struct HistoryView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.years) { year in
-                Section(String(year.year)) {
-                    ForEach(viewModel.months.filter { $0.yearId == year.id }) { month in
-                        NavigationLink(month.name) {
-                            Text(month.name)
-                        }
-                    }
-                }
-            }
-            .navigationTitle("History")
+            Text("hi")
         }
-        .onAppear {
-            self.viewModel.fetchYears()
-        }
+        .navigationTitle("History")
     }
 }
+
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {

@@ -10,8 +10,6 @@ import SwiftUI
 struct AddAccountItemView: View {
     @ObservedObject private var viewModel = AddAccountItemViewModel()
     
-    let monthId: String
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -35,15 +33,12 @@ struct AddAccountItemView: View {
             .alert(viewModel.errorMessage, isPresented: $viewModel.showingError) {
                 Button("OK") { }
             }
-            .onAppear {
-                viewModel.fetchAccounts(monthId: monthId)
-            }
         }
     }
 }
 
 struct AddAccountItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddAccountItemView(monthId: "1")
+        AddAccountItemView()
     }
 }

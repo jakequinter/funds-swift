@@ -10,6 +10,5 @@ import Foundation
 
 struct Account: Codable, Equatable, Hashable, Identifiable {
     @DocumentID var id: String?
-    var monthId: String
     var name: String
 }

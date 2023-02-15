@@ -20,6 +20,18 @@ struct HomeView: View {
         displayName = Auth.auth().currentUser?.email ?? ""
     }
     
+    var monthString: String {
+        if viewModel.currentBudget?.month != nil {
+            return Calendar.current.monthSymbols[(viewModel.currentBudget?.month)! - 1]
+        }
+        
+        return ""
+    }
+    
+    var yearString: String {
+        String(viewModel.currentBudget?.year ?? 0)
+    }
+    
     var body: some View {
         if !authentication.isAuthenticated {
             LoginView()
@@ -41,7 +53,7 @@ struct HomeView: View {
                         }
                     }
                 }
-                .navigationTitle("\(viewModel.month?.name ?? ""), \(String(viewModel.year?.year ?? 0))")
+                .navigationTitle("\(monthString), \(yearString)")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Menu {
@@ -59,13 +71,13 @@ struct HomeView: View {
             }
             
             .onAppear() {
-                self.viewModel.fetchData()
+                viewModel.fetchData()
             }
             .sheet(isPresented: $showingAddAccountSheet) {
-                AddAccountView(monthId: viewModel.month?.id ?? "")
+                AddAccountView()
             }
             .sheet(isPresented: $showingAddItemSheet) {
-                AddAccountItemView(monthId: viewModel.month?.id ?? "")
+                AddAccountItemView()
             }
             .environmentObject(authentication)
         }

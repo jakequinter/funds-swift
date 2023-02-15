@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B72D65C6299981DE0030FBF2 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72D65C5299981DE0030FBF2 /* HistoryView.swift */; };
 		B72D65C8299982150030FBF2 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72D65C7299982150030FBF2 /* HistoryViewModel.swift */; };
+		B72E96C8299D8380002EA4A5 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72E96C7299D8380002EA4A5 /* Budget.swift */; };
 		B7405364299971460064AF36 /* FundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7405363299971460064AF36 /* FundsApp.swift */; };
 		B7405366299971460064AF36 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7405365299971460064AF36 /* HomeView.swift */; };
 		B7405368299971470064AF36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7405367299971470064AF36 /* Assets.xcassets */; };
@@ -24,8 +25,6 @@
 		B7EC4149299972CC000FE6CE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7EC4148299972CC000FE6CE /* FirebaseFirestoreSwift */; };
 		B7EC41502999742E000FE6CE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC414F2999742E000FE6CE /* Account.swift */; };
 		B7EC41522999743D000FE6CE /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41512999743D000FE6CE /* AccountItem.swift */; };
-		B7EC41542999744A000FE6CE /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41532999744A000FE6CE /* Month.swift */; };
-		B7EC41562999745E000FE6CE /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41552999745E000FE6CE /* Year.swift */; };
 		B7EC41582999747F000FE6CE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41572999747F000FE6CE /* HomeViewModel.swift */; };
 		B7EC415A2999749F000FE6CE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41592999749F000FE6CE /* LoginViewModel.swift */; };
 		B7EC415C299974F8000FE6CE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC415B299974F8000FE6CE /* LoginView.swift */; };
@@ -35,6 +34,7 @@
 /* Begin PBXFileReference section */
 		B72D65C5299981DE0030FBF2 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		B72D65C7299982150030FBF2 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		B72E96C7299D8380002EA4A5 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		B7405360299971460064AF36 /* Funds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7405363299971460064AF36 /* FundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundsApp.swift; sourceTree = "<group>"; };
 		B7405365299971460064AF36 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -49,8 +49,6 @@
 		B7A491E9299AE628004C6E94 /* AddAccountItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountItemViewModel.swift; sourceTree = "<group>"; };
 		B7EC414F2999742E000FE6CE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		B7EC41512999743D000FE6CE /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
-		B7EC41532999744A000FE6CE /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
-		B7EC41552999745E000FE6CE /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		B7EC41572999747F000FE6CE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B7EC41592999749F000FE6CE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B7EC415B299974F8000FE6CE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -124,8 +122,7 @@
 			children = (
 				B7EC414F2999742E000FE6CE /* Account.swift */,
 				B7EC41512999743D000FE6CE /* AccountItem.swift */,
-				B7EC41532999744A000FE6CE /* Month.swift */,
-				B7EC41552999745E000FE6CE /* Year.swift */,
+				B72E96C7299D8380002EA4A5 /* Budget.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +233,7 @@
 			files = (
 				B7EC41522999743D000FE6CE /* AccountItem.swift in Sources */,
 				B7EC416029997A47000FE6CE /* Color.swift in Sources */,
+				B72E96C8299D8380002EA4A5 /* Budget.swift in Sources */,
 				B77B7D23299C402E00BF39F3 /* AccountsView.swift in Sources */,
 				B77B7D1F299C256B00BF39F3 /* AddAccountView.swift in Sources */,
 				B7405366299971460064AF36 /* HomeView.swift in Sources */,
@@ -247,8 +245,6 @@
 				B7405364299971460064AF36 /* FundsApp.swift in Sources */,
 				B72D65C8299982150030FBF2 /* HistoryViewModel.swift in Sources */,
 				B7EC415A2999749F000FE6CE /* LoginViewModel.swift in Sources */,
-				B7EC41542999744A000FE6CE /* Month.swift in Sources */,
-				B7EC41562999745E000FE6CE /* Year.swift in Sources */,
 				B7A491EA299AE628004C6E94 /* AddAccountItemViewModel.swift in Sources */,
 				B7EC41502999742E000FE6CE /* Account.swift in Sources */,
 			);
