@@ -18,7 +18,7 @@ import Foundation
     func fetchHistory() {
         guard let currentUser = Auth.auth().currentUser else { return }
         
-        db.collection("budgets").whereField("userId", isEqualTo: currentUser.uid).addSnapshotListener { (querySnapshot, error) in
+        db.collection("budgets").whereField("userId", isEqualTo: currentUser.uid).order(by: "year", descending: true).order(by: "month", descending: true).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No budgets in HistoryViewModel")
                 return
