@@ -17,10 +17,12 @@ class AddAccountViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
     init() {
-        self.account = Account(id: "", name: "")
+        self.account = Account(id: "", budgetId: "", name: "")
     }
     
-    func addAccount() {
+    func addAccount(budgetId: String) {
+        self.account.budgetId = budgetId
+        
         do {
             let _ = try db.collection("accounts").addDocument(from: self.account)
         }

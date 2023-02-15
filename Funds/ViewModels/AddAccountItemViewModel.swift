@@ -32,16 +32,16 @@ class AddAccountItemViewModel: ObservableObject {
         }
     }
     
-    func fetchAccounts(monthId: String) {
+    func fetchAccounts(budgetId: String) {
         guard let _ = Auth.auth().currentUser else { return }
 
-        if monthId.isEmpty {
+        if budgetId.isEmpty {
             errorMessage = "Cannot find account ID"
             showingError = true
             return
         }
 
-        db.collection("accounts").whereField("monthId", isEqualTo: monthId).addSnapshotListener { (querySnapshot, error) in
+        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts in AddAccountViewModel")
                 return

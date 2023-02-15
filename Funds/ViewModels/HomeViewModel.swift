@@ -16,7 +16,7 @@ import Foundation
     
     private var db = Firestore.firestore()
     
-    func fetchData() {
+    func fetchCurrentBudget() {
         guard let currentUser = Auth.auth().currentUser else { return }
         
         db.collection("budgets").whereField("userId", isEqualTo: currentUser.uid).order(by: "year", descending: true).order(by: "month", descending: true).addSnapshotListener { (querySnapshot, error) in
@@ -39,7 +39,7 @@ import Foundation
     func fetchAccountsForCurrentBudget(budgetId: String) {
         guard let _ = Auth.auth().currentUser else { return }
         
-        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).addSnapshotListener { (querySnapshot, error) in
+        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).order(by: "name").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts")
                 return

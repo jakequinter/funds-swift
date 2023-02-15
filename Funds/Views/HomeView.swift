@@ -71,13 +71,13 @@ struct HomeView: View {
             }
             
             .onAppear() {
-                viewModel.fetchData()
+                viewModel.fetchCurrentBudget()
             }
             .sheet(isPresented: $showingAddAccountSheet) {
-                AddAccountView()
+                AddAccountView(budgetId: viewModel.currentBudget?.id ?? "")
             }
             .sheet(isPresented: $showingAddItemSheet) {
-                AddAccountItemView()
+                AddAccountItemView(budgetId: viewModel.currentBudget?.id ?? "")
             }
             .environmentObject(authentication)
         }

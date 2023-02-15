@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct AccountsView: View {
+    @ObservedObject private var viewModel = AccountsViewModel()
+    
     var body: some View {
-        Text("Accounts")
+        NavigationStack {
+            List(viewModel.accounts) {
+                Text($0.name)
+            }
+            .navigationTitle("Accounts")
+        }
+        .onAppear {
+            viewModel.fetchCurrentBudget()
+        }
     }
 }
 

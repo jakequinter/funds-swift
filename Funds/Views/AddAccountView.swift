@@ -10,6 +10,8 @@ import SwiftUI
 struct AddAccountView: View {
     @ObservedObject private var viewModel = AddAccountViewModel()
     
+    let budgetId: String
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -17,7 +19,7 @@ struct AddAccountView: View {
                     .textFieldStyle(.roundedBorder)
             }
             Button("Add") {
-                viewModel.addAccount()
+                viewModel.addAccount(budgetId: budgetId)
             }
             Spacer()
         }
@@ -31,6 +33,6 @@ struct AddAccountView: View {
 
 struct AddAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AddAccountView()
+        AddAccountView(budgetId: "1")
     }
 }
