@@ -11,7 +11,7 @@ import Foundation
 
 @MainActor class HistoryViewModel: ObservableObject {
     @Published var budgets = [Budget]()
-    @Published var years = [Int]()
+    var years = [Int]()
     
     private var db = Firestore.firestore()
     
@@ -33,6 +33,8 @@ import Foundation
     }
     
     func findUniqueYears() {
+        self.years = []
+            
         var hasOccuredYears = [Int]()
         
         for budget in self.budgets {
