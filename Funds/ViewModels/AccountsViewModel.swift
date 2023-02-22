@@ -11,6 +11,7 @@ import Foundation
 
 class AccountsViewModel: ObservableObject {
     @Published var accounts = [Account]()
+    @Published var accountItems = [AccountItem]()
     var budgetId: String?
     
     private var db = Firestore.firestore()
@@ -46,6 +47,49 @@ class AccountsViewModel: ObservableObject {
             
             self.accounts = documents.compactMap { queryDocumentSnapshot -> Account? in
                 return try? queryDocumentSnapshot.data(as: Account.self)
+            }
+            
+            self.fetchAccountItemsForCurrentBudget()
+        }
+    }
+    
+    func fetchAccountItemsForCurrentBudget() {
+        let accountIds = self.accounts.map { $0.id }
+        
+        db.collection("items").whereField("accountId", in: accountIds as [Any]).addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No account items")
+                return
+            }
+            
+            self.accountItems = documents.compactMap { queryDocumentSnapshot -> AccountItem? in
+                return try? queryDocumentSnapshot.data(as: AccountItem.self)
+            }
+        }
+    }
+    
+    func deleteAccount(accountId: String?) {
+        // TODO: check if empty string make guard called
+        guard let accountId = accountId else {
+            print("No account ID")
+            return
+        }
+        
+        db.collection("accounts").document(accountId).delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        for item in self.accountItems {
+            guard let id = item.id else { return }
+            
+            if item.accountId == accountId {
+                db.collection("items").document(id).delete { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
             }
         }
     }

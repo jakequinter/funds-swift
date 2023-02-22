@@ -12,8 +12,15 @@ struct AccountsView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.accounts) {
-                Text($0.name)
+            List {
+                ForEach(viewModel.accounts) { account in
+                    Text(account.name)
+                        .swipeActions {
+                            Button("Delete", role: .destructive) {
+                                viewModel.deleteAccount(accountId: account.id)
+                            }
+                        }
+                }
             }
             .navigationTitle("Accounts")
         }

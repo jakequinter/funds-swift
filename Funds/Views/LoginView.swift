@@ -15,7 +15,11 @@ struct LoginView: View {
         NavigationStack {
             VStack {
                 TextField("Email", text: $loginVM.email)
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
                 TextField("Password", text: $loginVM.password)
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
                 Button("Login") {
                     loginVM.login {
                         authentication.isAuthenticated = true
