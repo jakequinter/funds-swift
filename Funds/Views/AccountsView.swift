@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct AccountsView: View {
+    @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = AccountsViewModel()
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.accounts) { account in
+                ForEach(currentBudget.accounts) { account in
                     Text(account.name)
                         .swipeActions {
                             Button("Delete", role: .destructive) {
-                                viewModel.deleteAccount(accountId: account.id)
+                                viewModel.deleteAccount(accountId: account.id, accountItems: currentBudget.accountItems)
                             }
                         }
                 }
@@ -25,8 +26,9 @@ struct AccountsView: View {
             .navigationTitle("Accounts")
         }
         .onAppear {
-            viewModel.fetchCurrentBudget()
+            currentBudget.fetchCurrentBudget()
         }
+        .environmentObject(currentBudget)
     }
 }
 

@@ -64,7 +64,6 @@ struct HomeView: View {
                     }
                 }
             }
-            
             .onAppear() {
                 currentBudget.fetchCurrentBudget()
             }
