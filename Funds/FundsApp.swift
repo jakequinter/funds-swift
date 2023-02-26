@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct FundsApp: App {
     @EnvironmentObject var authentication: LoginViewModel
+    @EnvironmentObject var buget: BudgetViewModel
     @State private var selectedTab = "Home"
     
     

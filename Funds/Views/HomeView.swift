@@ -10,10 +10,10 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var authentication = LoginViewModel()
+    @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = HomeViewModel()
     
     @State private var displayName: String
-    @State private var showingAddAccountSheet = false
     @State private var showingAddItemSheet = false
     
     init() {
@@ -21,15 +21,15 @@ struct HomeView: View {
     }
     
     var monthString: String {
-        if viewModel.currentBudget?.month != nil {
-            return Calendar.current.monthSymbols[(viewModel.currentBudget?.month)! - 1]
+        if currentBudget.budget?.month != nil {
+            return Calendar.current.monthSymbols[(currentBudget.budget?.month)! - 1]
         }
         
         return ""
     }
     
     var yearString: String {
-        String(viewModel.currentBudget?.year ?? 0)
+        String(currentBudget.budget?.year ?? 0)
     }
     
     var body: some View {
@@ -37,9 +37,9 @@ struct HomeView: View {
             LoginView()
         } else {
             NavigationView {
-                List(viewModel.accounts) { account in
+                List(currentBudget.accounts) { account in
                     Section(account.name) {
-                        ForEach(viewModel.accountItems.filter { $0.accountId == account.id }) { item in
+                        ForEach(currentBudget.accountItems.filter { $0.accountId == account.id }) { item in
                             HStack {
                                 Text(item.name)
                                 Spacer()
@@ -56,13 +56,8 @@ struct HomeView: View {
                 .navigationTitle("\(monthString), \(yearString)")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Menu {
-                            Button("Add item") {
-                                showingAddItemSheet = true
-                            }
-                            Button("Add account") {
-                                showingAddAccountSheet = true
-                            }
+                        Button {
+                            showingAddItemSheet = true
                         } label: {
                             Image(systemName: "plus")
                         }
@@ -71,15 +66,13 @@ struct HomeView: View {
             }
             
             .onAppear() {
-                viewModel.fetchCurrentBudget()
-            }
-            .sheet(isPresented: $showingAddAccountSheet) {
-                AddAccountView(budgetId: viewModel.currentBudget?.id ?? "")
+                currentBudget.fetchCurrentBudget()
             }
             .sheet(isPresented: $showingAddItemSheet) {
-                AddAccountItemView(budgetId: viewModel.currentBudget?.id ?? "")
+                AddAccountItemView(budgetId: currentBudget.budget?.id ?? "")
             }
             .environmentObject(authentication)
+            .environmentObject(currentBudget)
         }
     }
 }

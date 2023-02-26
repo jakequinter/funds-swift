@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B71A73E429AB913600E9F3B6 /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71A73E329AB913600E9F3B6 /* BudgetViewModel.swift */; };
 		B72D65C6299981DE0030FBF2 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72D65C5299981DE0030FBF2 /* HistoryView.swift */; };
 		B72D65C8299982150030FBF2 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72D65C7299982150030FBF2 /* HistoryViewModel.swift */; };
 		B72E96C8299D8380002EA4A5 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72E96C7299D8380002EA4A5 /* Budget.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B71A73E329AB913600E9F3B6 /* BudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
 		B72D65C5299981DE0030FBF2 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		B72D65C7299982150030FBF2 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		B72E96C7299D8380002EA4A5 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
@@ -71,6 +73,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B71A73E229AB8E6A00E9F3B6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		B7405357299971460064AF36 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +101,7 @@
 			children = (
 				B7405363299971460064AF36 /* FundsApp.swift */,
 				B7EC414A299973D1000FE6CE /* Extensions */,
+				B71A73E229AB8E6A00E9F3B6 /* Managers */,
 				B7EC414C299973E1000FE6CE /* Models */,
 				B7EC414D299973E6000FE6CE /* ViewModels */,
 				B7EC414E299973EB000FE6CE /* Views */,
@@ -135,6 +145,7 @@
 				B7CC5707299D8DE100FE3B29 /* AccountsViewModel.swift */,
 				B77B7D20299C25FB00BF39F3 /* AddAccountViewModel.swift */,
 				B7A491E9299AE628004C6E94 /* AddAccountItemViewModel.swift */,
+				B71A73E329AB913600E9F3B6 /* BudgetViewModel.swift */,
 				B72D65C7299982150030FBF2 /* HistoryViewModel.swift */,
 				B7EC41572999747F000FE6CE /* HomeViewModel.swift */,
 				B7EC41592999749F000FE6CE /* LoginViewModel.swift */,
@@ -249,6 +260,7 @@
 				B7405364299971460064AF36 /* FundsApp.swift in Sources */,
 				B72D65C8299982150030FBF2 /* HistoryViewModel.swift in Sources */,
 				B7EC415A2999749F000FE6CE /* LoginViewModel.swift in Sources */,
+				B71A73E429AB913600E9F3B6 /* BudgetViewModel.swift in Sources */,
 				B7A491EA299AE628004C6E94 /* AddAccountItemViewModel.swift in Sources */,
 				B7EC41502999742E000FE6CE /* Account.swift in Sources */,
 			);
