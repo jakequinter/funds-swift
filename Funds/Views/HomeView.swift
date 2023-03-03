@@ -20,14 +20,6 @@ struct HomeView: View {
         displayName = Auth.auth().currentUser?.email ?? ""
     }
 
-    var monthString: String {
-        if currentBudget.budget?.month != nil {
-            return Calendar.current.monthSymbols[(currentBudget.budget?.month)! - 1]
-        }
-
-        return ""
-    }
-
     var yearString: String {
         String(currentBudget.budget?.year ?? 0)
     }
@@ -63,7 +55,7 @@ struct HomeView: View {
                         }
                     }
                 }
-                .navigationTitle("\(monthString), \(yearString)")
+                .navigationTitle("\(currentBudget.monthString), \(yearString)")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
