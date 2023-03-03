@@ -13,4 +13,5 @@ struct AccountItem: Codable, Equatable, Hashable, Identifiable {
     var accountId: String
     var name: String
     var amount: Double
+    var additionalAmount: Double?
 }

@@ -38,12 +38,22 @@ struct HomeView: View {
         } else {
             NavigationView {
                 List(currentBudget.accounts) { account in
-                    Section(account.name) {
+                    Section(header: AccountSectionHeader(
+                        accountName: account.name,
+                        total: sumAccountItems(accountId: account.id ?? "")
+                    )) {
                         ForEach(currentBudget.accountItems.filter { $0.accountId == account.id }) { item in
                             HStack {
                                 Text(item.name)
                                 Spacer()
-                                Text("$\(item.amount, specifier: "%.2f")")
+                                HStack {
+                                    if let additionalAmount = item.additionalAmount {
+                                        Text("(\(additionalAmount))")
+                                            .font(.caption2)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    Text("$\(item.amount, specifier: "%.2f")")
+                                }
                             }
                             .swipeActions {
                                 Button("Delete", role: .destructive) {
@@ -72,6 +82,27 @@ struct HomeView: View {
             }
             .environmentObject(authentication)
             .environmentObject(currentBudget)
+        }
+    }
+
+    func sumAccountItems(accountId: String) -> String {
+        let total = currentBudget.accountItems.filter { $0.accountId == accountId}.map { $0.amount }.reduce(0, +)
+
+        return NumberFormatter.localizedString(from: total as NSNumber, number: .currency)
+    }
+}
+
+struct AccountSectionHeader: View {
+    let accountName: String
+    let total: String
+
+    var body: some View {
+        HStack {
+            Text(accountName)
+            Spacer()
+            Text(total)
+                .font(.subheadline.weight(.medium))
+                .foregroundColor(.emerald)
         }
     }
 }
