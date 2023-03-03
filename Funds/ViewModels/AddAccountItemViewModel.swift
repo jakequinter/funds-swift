@@ -14,26 +14,25 @@ class AddAccountItemViewModel: ObservableObject {
     @Published var accounts = [Account]()
     @Published var showingError = false
     @Published var errorMessage = ""
-    
-    private var db = Firestore.firestore()
-    
+
+    private var database = Firestore.firestore()
+
     init() {
         self.accountItem = AccountItem(id: "", accountId: "", name: "", amount: 0)
     }
-    
+
     func addAccountItem() {
         do {
-            let _ = try db.collection("items").addDocument(from: self.accountItem)
-        }
-        catch {
+            _ = try database.collection("items").addDocument(from: self.accountItem)
+        } catch {
             print(error)
             errorMessage = "There was a problem adding your account item"
             showingError = true
         }
     }
-    
+
     func fetchAccounts(budgetId: String) {
-        guard let _ = Auth.auth().currentUser else { return }
+        guard Auth.auth().currentUser != nil else { return }
 
         if budgetId.isEmpty {
             errorMessage = "Cannot find account ID"
@@ -41,7 +40,10 @@ class AddAccountItemViewModel: ObservableObject {
             return
         }
 
-        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).order(by: "name").addSnapshotListener { (querySnapshot, error) in
+        database.collection("accounts")
+            .whereField("budgetId", isEqualTo: budgetId)
+            .order(by: "name")
+            .addSnapshotListener { (querySnapshot, _) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts in AddAccountViewModel")
                 return

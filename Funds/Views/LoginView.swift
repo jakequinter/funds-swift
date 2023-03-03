@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @StateObject var authentication = LoginViewModel()
     @ObservedObject private var loginVM = LoginViewModel()
-    
+
     var body: some View {
         NavigationStack {
             VStack {

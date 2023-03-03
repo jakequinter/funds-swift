@@ -12,26 +12,26 @@ struct HomeView: View {
     @StateObject var authentication = LoginViewModel()
     @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = HomeViewModel()
-    
+
     @State private var displayName: String
     @State private var showingAddItemSheet = false
-    
+
     init() {
         displayName = Auth.auth().currentUser?.email ?? ""
     }
-    
+
     var monthString: String {
         if currentBudget.budget?.month != nil {
             return Calendar.current.monthSymbols[(currentBudget.budget?.month)! - 1]
         }
-        
+
         return ""
     }
-    
+
     var yearString: String {
         String(currentBudget.budget?.year ?? 0)
     }
-    
+
     var body: some View {
         if !authentication.isAuthenticated {
             LoginView()
@@ -64,7 +64,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .onAppear() {
+            .onAppear {
                 currentBudget.fetchCurrentBudget()
             }
             .sheet(isPresented: $showingAddItemSheet) {

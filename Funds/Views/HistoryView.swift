@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     @ObservedObject private var viewModel = HistoryViewModel()
-    
+
     var body: some View {
         NavigationStack {
             List(viewModel.years, id: \.self) { year in

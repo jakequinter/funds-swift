@@ -10,9 +10,9 @@ import SwiftUI
 struct AddAccountItemView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = AddAccountItemViewModel()
-    
+
     let budgetId: String
-    
+
     var body: some View {
         NavigationStack {
             VStack {

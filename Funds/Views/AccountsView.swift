@@ -10,9 +10,9 @@ import SwiftUI
 struct AccountsView: View {
     @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = AccountsViewModel()
-    
+
     @State private var showingAddAccountSheet = false
-    
+
     var body: some View {
         NavigationStack {
             List {

@@ -12,13 +12,13 @@ class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var isAuthenticated: Bool
-    
+
     init() {
         isAuthenticated = Auth.auth().currentUser?.uid != nil
     }
-    
+
     func login(completion: @escaping () -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
