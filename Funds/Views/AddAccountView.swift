@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddAccountView: View {
+    @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = AddAccountViewModel()
     
     let budgetId: String
@@ -20,6 +21,7 @@ struct AddAccountView: View {
             }
             Button("Add") {
                 viewModel.addAccount(budgetId: budgetId)
+                dismiss()
             }
             Spacer()
         }

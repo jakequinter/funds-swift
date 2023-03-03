@@ -41,7 +41,7 @@ class AddAccountItemViewModel: ObservableObject {
             return
         }
 
-        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).addSnapshotListener { (querySnapshot, error) in
+        db.collection("accounts").whereField("budgetId", isEqualTo: budgetId).order(by: "name").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No accounts in AddAccountViewModel")
                 return

@@ -11,6 +11,8 @@ struct AccountsView: View {
     @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = AccountsViewModel()
     
+    @State private var showingAddAccountSheet = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -24,6 +26,18 @@ struct AccountsView: View {
                 }
             }
             .navigationTitle("Accounts")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAddAccountSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showingAddAccountSheet) {
+            AddAccountView(budgetId: currentBudget.budget?.id ?? "")
         }
         .onAppear {
             currentBudget.fetchCurrentBudget()
