@@ -13,12 +13,12 @@ class BudgetViewModel: ObservableObject {
     @Published var budget: Budget?
     @Published var accounts = [Account]()
     @Published var accountItems = [AccountItem]()
-    
+
     var monthString: String {
         if let month = budget?.month {
             return Calendar.current.monthSymbols[month - 1]
         }
-        
+
         return ""
     }
 
