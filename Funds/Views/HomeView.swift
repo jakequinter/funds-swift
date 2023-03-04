@@ -9,20 +9,9 @@ import Firebase
 import SwiftUI
 
 struct HomeView: View {
-    //    @StateObject var authentication = LoginViewModel()
     @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = HomeViewModel()
-    
-    @State private var displayName: String
     @State private var showingAddItemSheet = false
-    
-    init() {
-        displayName = Auth.auth().currentUser?.email ?? ""
-    }
-    
-    var yearString: String {
-        String(currentBudget.budget?.year ?? 0)
-    }
     
     var body: some View {
         NavigationView {
@@ -52,7 +41,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("\(currentBudget.monthString), \(yearString)")
+            .navigationTitle(currentBudget.budgetDisplayName)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
