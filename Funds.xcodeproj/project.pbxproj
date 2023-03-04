@@ -15,6 +15,7 @@
 		B7405366299971460064AF36 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7405365299971460064AF36 /* HomeView.swift */; };
 		B7405368299971470064AF36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7405367299971470064AF36 /* Assets.xcassets */; };
 		B740536B299971470064AF36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B740536A299971470064AF36 /* Preview Assets.xcassets */; };
+		B77241C229B3BAF4000A2404 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77241C129B3BAF4000A2404 /* TabsView.swift */; };
 		B77B7D1F299C256B00BF39F3 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77B7D1E299C256B00BF39F3 /* AddAccountView.swift */; };
 		B77B7D21299C25FB00BF39F3 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77B7D20299C25FB00BF39F3 /* AddAccountViewModel.swift */; };
 		B77B7D23299C402E00BF39F3 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77B7D22299C402E00BF39F3 /* AccountsView.swift */; };
@@ -30,7 +31,6 @@
 		B7EC41582999747F000FE6CE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41572999747F000FE6CE /* HomeViewModel.swift */; };
 		B7EC415A2999749F000FE6CE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC41592999749F000FE6CE /* LoginViewModel.swift */; };
 		B7EC415C299974F8000FE6CE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC415B299974F8000FE6CE /* LoginView.swift */; };
-		B7EC416029997A47000FE6CE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC415F29997A47000FE6CE /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +43,7 @@
 		B7405365299971460064AF36 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B7405367299971470064AF36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B740536A299971470064AF36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B77241C129B3BAF4000A2404 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		B77B7D1E299C256B00BF39F3 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		B77B7D20299C25FB00BF39F3 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
 		B77B7D22299C402E00BF39F3 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		B7EC41572999747F000FE6CE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B7EC41592999749F000FE6CE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B7EC415B299974F8000FE6CE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		B7EC415F29997A47000FE6CE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				B7405363299971460064AF36 /* FundsApp.swift */,
-				B7EC414A299973D1000FE6CE /* Extensions */,
 				B71A73E229AB8E6A00E9F3B6 /* Managers */,
 				B7EC414C299973E1000FE6CE /* Models */,
 				B7EC414D299973E6000FE6CE /* ViewModels */,
@@ -119,14 +118,6 @@
 				B740536A299971470064AF36 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		B7EC414A299973D1000FE6CE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				B7EC415F29997A47000FE6CE /* Color.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B7EC414C299973E1000FE6CE /* Models */ = {
@@ -162,6 +153,7 @@
 				B72D65C5299981DE0030FBF2 /* HistoryView.swift */,
 				B7405365299971460064AF36 /* HomeView.swift */,
 				B7EC415B299974F8000FE6CE /* LoginView.swift */,
+				B77241C129B3BAF4000A2404 /* TabsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,7 +260,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7EC41522999743D000FE6CE /* AccountItem.swift in Sources */,
-				B7EC416029997A47000FE6CE /* Color.swift in Sources */,
 				B7CC5708299D8DE100FE3B29 /* AccountsViewModel.swift in Sources */,
 				B72E96C8299D8380002EA4A5 /* Budget.swift in Sources */,
 				B77B7D23299C402E00BF39F3 /* AccountsView.swift in Sources */,
@@ -276,6 +267,7 @@
 				B7405366299971460064AF36 /* HomeView.swift in Sources */,
 				B7A491E8299AE30E004C6E94 /* AddAccountItemView.swift in Sources */,
 				B7EC41582999747F000FE6CE /* HomeViewModel.swift in Sources */,
+				B77241C229B3BAF4000A2404 /* TabsView.swift in Sources */,
 				B77B7D21299C25FB00BF39F3 /* AddAccountViewModel.swift in Sources */,
 				B7EC415C299974F8000FE6CE /* LoginView.swift in Sources */,
 				B72D65C6299981DE0030FBF2 /* HistoryView.swift in Sources */,

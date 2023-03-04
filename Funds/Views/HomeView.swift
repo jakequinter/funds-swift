@@ -9,77 +9,72 @@ import Firebase
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var authentication = LoginViewModel()
+    //    @StateObject var authentication = LoginViewModel()
     @StateObject var currentBudget = BudgetViewModel()
     @ObservedObject private var viewModel = HomeViewModel()
-
+    
     @State private var displayName: String
     @State private var showingAddItemSheet = false
-
+    
     init() {
         displayName = Auth.auth().currentUser?.email ?? ""
     }
-
+    
     var yearString: String {
         String(currentBudget.budget?.year ?? 0)
     }
-
+    
     var body: some View {
-        if !authentication.isAuthenticated {
-            LoginView()
-        } else {
-            NavigationView {
-                List(currentBudget.accounts) { account in
-                    Section(header: AccountSectionHeader(
-                        accountName: account.name,
-                        total: sumAccountItems(accountId: account.id ?? "")
-                    )) {
-                        ForEach(currentBudget.accountItems.filter { $0.accountId == account.id }) { item in
+        NavigationView {
+            List(currentBudget.accounts) { account in
+                Section(header: AccountSectionHeader(
+                    accountName: account.name,
+                    total: sumAccountItems(accountId: account.id ?? "")
+                )) {
+                    ForEach(currentBudget.accountItems.filter { $0.accountId == account.id }) { item in
+                        HStack {
+                            Text(item.name)
+                            Spacer()
                             HStack {
-                                Text(item.name)
-                                Spacer()
-                                HStack {
-                                    if let additionalAmount = item.additionalAmount {
-                                        Text("(\(additionalAmount))")
-                                            .font(.caption2)
-                                            .foregroundColor(.secondary)
-                                    }
-                                    Text("$\(item.amount, specifier: "%.2f")")
+                                if let additionalAmount = item.additionalAmount {
+                                    Text("(\(additionalAmount))")
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
                                 }
+                                Text("$\(item.amount, specifier: "%.2f")")
                             }
-                            .swipeActions {
-                                Button("Delete", role: .destructive) {
-                                    viewModel.deleteAccountItem(accountItemId: item.id)
-                                }
+                        }
+                        .swipeActions {
+                            Button("Delete", role: .destructive) {
+                                viewModel.deleteAccountItem(accountItemId: item.id)
                             }
                         }
                     }
                 }
-                .navigationTitle("\(currentBudget.monthString), \(yearString)")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showingAddItemSheet = true
-                        } label: {
-                            Image(systemName: "plus")
-                        }
+            }
+            .navigationTitle("\(currentBudget.monthString), \(yearString)")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAddItemSheet = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
             }
-            .onAppear {
-                currentBudget.fetchCurrentBudget()
-            }
-            .sheet(isPresented: $showingAddItemSheet) {
-                AddAccountItemView(budgetId: currentBudget.budget?.id ?? "")
-            }
-            .environmentObject(authentication)
-            .environmentObject(currentBudget)
         }
+        .onAppear {
+            currentBudget.fetchCurrentBudget()
+        }
+        .sheet(isPresented: $showingAddItemSheet) {
+            AddAccountItemView(budgetId: currentBudget.budget?.id ?? "")
+        }
+        .environmentObject(currentBudget)
     }
-
+    
     func sumAccountItems(accountId: String) -> String {
         let total = currentBudget.accountItems.filter { $0.accountId == accountId}.map { $0.amount }.reduce(0, +)
-
+        
         return NumberFormatter.localizedString(from: total as NSNumber, number: .currency)
     }
 }
@@ -87,14 +82,14 @@ struct HomeView: View {
 struct AccountSectionHeader: View {
     let accountName: String
     let total: String
-
+    
     var body: some View {
         HStack {
             Text(accountName)
             Spacer()
             Text(total)
                 .font(.subheadline.weight(.medium))
-                .foregroundColor(.emerald)
+                .foregroundColor(.accentColor)
         }
     }
 }

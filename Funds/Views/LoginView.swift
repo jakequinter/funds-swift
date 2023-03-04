@@ -41,7 +41,7 @@ struct LoginView: View {
                         )
                         .autocapitalization(.none)
                         .autocorrectionDisabled()
-                    TextField("Password", text: $loginVM.password)
+                    SecureField("Password", text: $loginVM.password)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(.white.opacity(0.2).gradient)
@@ -84,7 +84,8 @@ struct LoginView: View {
                 .frame(maxWidth: 500)
                 .padding(10)
                 .navigationDestination(isPresented: $authentication.isAuthenticated) {
-                    HomeView()
+                    TabsView()
+                        .navigationBarBackButtonHidden(true)
                 }
             }
             .ignoresSafeArea()
