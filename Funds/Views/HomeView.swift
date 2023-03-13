@@ -14,7 +14,7 @@ struct HomeView: View {
     @State private var showingAddItemSheet = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(currentBudget.accounts) { account in
                 Section(header: AccountSectionHeader(
                     accountName: account.name,
@@ -57,6 +57,7 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showingAddItemSheet) {
             AddAccountItemView(budgetId: currentBudget.budget?.id ?? "")
+                .presentationDetents([.medium])
         }
         .environmentObject(currentBudget)
     }
