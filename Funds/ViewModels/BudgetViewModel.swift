@@ -13,6 +13,16 @@ class BudgetViewModel: ObservableObject {
     @Published var budget: Budget?
     @Published var accounts = [Account]()
     @Published var accountItems = [AccountItem]()
+    var showArchive = false
+    var currentMonth: Int
+    var currentYear: Int
+    
+    init() {
+        let date = Date()
+        let calendar = Calendar.current
+        self.currentMonth = calendar.component(.month, from: date)
+        self.currentYear = calendar.component(.year, from: date)
+    }
     
     var budgetDisplayName: String {
         let month = monthString
@@ -49,8 +59,14 @@ class BudgetViewModel: ObservableObject {
                 }
                 
                 if budgets.count > 0 {
-                    self.budget = budgets.first!
+                    self.budget = budgets.first
                     self.fetchAccountsForCurrentBudget(budgetId: budgets.first!.id!)
+                    
+                    if let budget = self.budget {
+                        if budget.year < self.currentYear || budget.month < self.currentMonth {
+                            self.showArchive = true
+                        }
+                    }
                 }
             }
     }
@@ -76,6 +92,10 @@ class BudgetViewModel: ObservableObject {
     func fetchAccountItems() {
         let accountIds = self.accounts.map { $0.id }
         
+        if accountIds.isEmpty {
+            return
+        }
+        
         database.collection("items")
             .whereField("accountId", in: accountIds as [Any])
             .addSnapshotListener { (querySnapshot, _) in
@@ -88,5 +108,18 @@ class BudgetViewModel: ObservableObject {
                     return try? queryDocumentSnapshot.data(as: AccountItem.self)
                 }
             }
+    }
+    
+    func archiveBudget() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let userId = currentUser.uid
+        
+        let budget = Budget(userId: userId, year: self.currentYear, month: self.currentMonth)
+        do {
+            _ = try database.collection("budgets").addDocument(from: budget)
+            self.showArchive = false
+        } catch {
+            print(error)
+        }
     }
 }

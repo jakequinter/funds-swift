@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabsView: View {
-    @EnvironmentObject var buget: BudgetViewModel
+    @EnvironmentObject var budget: BudgetViewModel
     @StateObject var authentication = LoginViewModel()
     @State private var selectedTab = "Home"
     

@@ -43,6 +43,13 @@ struct HomeView: View {
             }
             .navigationTitle(currentBudget.budgetDisplayName)
             .toolbar {
+                if currentBudget.showArchive {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Archive") {
+                            currentBudget.archiveBudget()
+                        }
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingAddItemSheet = true
