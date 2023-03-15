@@ -98,6 +98,7 @@ class BudgetViewModel: ObservableObject {
         
         database.collection("items")
             .whereField("accountId", in: accountIds as [Any])
+            .order(by: "name")
             .addSnapshotListener { (querySnapshot, _) in
                 guard let documents = querySnapshot?.documents else {
                     print("No account items")
@@ -113,10 +114,19 @@ class BudgetViewModel: ObservableObject {
     func archiveBudget() {
         guard let currentUser = Auth.auth().currentUser else { return }
         let userId = currentUser.uid
+        let previousMonthAccountNames = self.accounts.map { $0.name }
         
         let budget = Budget(userId: userId, year: self.currentYear, month: self.currentMonth)
+        
         do {
-            _ = try database.collection("budgets").addDocument(from: budget)
+            let result = try  database.collection("budgets").addDocument(from: budget)
+            
+            for name in previousMonthAccountNames {
+                let account = Account(budgetId: result.documentID, name: name)
+                
+                _ = try database.collection("accounts").addDocument(from: account)
+            }
+            
             self.showArchive = false
         } catch {
             print(error)
