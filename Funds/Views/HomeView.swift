@@ -65,6 +65,7 @@ struct HomeView: View {
         .sheet(isPresented: $showingAddItemSheet) {
             AddAccountItemView(budgetId: currentBudget.budget?.id ?? "")
                 .presentationDetents([.medium])
+                .presentationCornerRadius(36)
         }
         .environmentObject(currentBudget)
     }

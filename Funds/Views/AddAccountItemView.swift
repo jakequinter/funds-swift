@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddAccountItemView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = AddAccountItemViewModel()
     
@@ -24,6 +25,7 @@ struct AddAccountItemView: View {
                         .stroke()
                         .foregroundColor(.secondary.opacity(0.5))
                     )
+                    .padding(.bottom)
                 
                 TextField("Name", value: $viewModel.accountItem.amount, format: .number)
                     .padding()
@@ -33,6 +35,7 @@ struct AddAccountItemView: View {
                         .stroke()
                         .foregroundColor(.secondary.opacity(0.5))
                     )
+                    .padding(.bottom)
                 
                 Picker("Account", selection: $viewModel.accountItem.accountId) {
                     ForEach(viewModel.accounts) {
@@ -42,6 +45,7 @@ struct AddAccountItemView: View {
                     .padding()
                 }
                 .pickerStyle(.segmented)
+                .padding(.bottom)
                 
                 Button {
                     viewModel.addAccountItem()
@@ -50,7 +54,8 @@ struct AddAccountItemView: View {
                     Text("Add")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(.black.gradient)
+                        .background(colorScheme == .dark ? Color.black.gradient : Color.accentColor.gradient)
+                        .foregroundColor(colorScheme == .dark ? .accentColor : .white)
                         .cornerRadius(10)
                 }
                 .padding(.top, 24)

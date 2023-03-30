@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddAccountView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = AddAccountViewModel()
 
@@ -17,16 +18,33 @@ struct AddAccountView: View {
         NavigationStack {
             VStack {
                 TextField("Name", text: $viewModel.account.name)
-                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(10)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                        .stroke()
+                        .foregroundColor(.secondary.opacity(0.5))
+                    )
+                    .padding(.bottom)
+                
+                Button {
+                    viewModel.addAccount(budgetId: budgetId)
+                    dismiss()
+                } label: {
+                    Text("Add")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(colorScheme == .dark ? Color.black.gradient : Color.accentColor.gradient)
+                        .foregroundColor(colorScheme == .dark ? .accentColor : .white)
+                        .cornerRadius(10)
+                }
+                .padding(.top, 24)
+                
+                Spacer()
             }
-            Button("Add") {
-                viewModel.addAccount(budgetId: budgetId)
-                dismiss()
-            }
-            Spacer()
+            .padding()
+            .navigationTitle("Add account")
         }
-        .padding()
-        .navigationTitle("Add account")
         .alert(viewModel.errorMessage, isPresented: $viewModel.showingError) {
             Button("OK") { }
         }

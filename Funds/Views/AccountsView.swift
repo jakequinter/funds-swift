@@ -38,6 +38,8 @@ struct AccountsView: View {
         }
         .sheet(isPresented: $showingAddAccountSheet) {
             AddAccountView(budgetId: currentBudget.budget?.id ?? "")
+                .presentationDetents([.medium])
+                .presentationCornerRadius(36)
         }
         .onAppear {
             currentBudget.fetchCurrentBudget()
